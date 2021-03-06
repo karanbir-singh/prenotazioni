@@ -18,9 +18,9 @@ $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 // Oggetto che rappresenta la connessione al database
 $pdo = new PDO($dsn, $user, $pass);
 
-// Variabili al momento costanti, poi verrano prese tramite POST
-$codFiscale = 'FMGCRG04B20E944M';
-$giorno = '2021-03-06';
+// Variabili valorizzate tramite POST
+$codFiscale = $_POST['codFiscale'];
+$giorno = $_POST['giorno'];
 
 // Query di inserimento preparata
 $sql = "INSERT INTO prenotazione VALUES (null, :codFiscale, :giorno)";
