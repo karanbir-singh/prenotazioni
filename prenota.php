@@ -1,5 +1,4 @@
 <?php
-
 // Dice a livello dello script che gli errori verranno mostrati
 // e che non verrano loggati
 ini_set('display_errors', 1);
@@ -31,4 +30,7 @@ $stmt = $pdo->prepare($sql);
 // Invio dei dati concreti che verranno messi al posto dei "segnaposto" (:codFiscale, :giorno)
 $stmt->execute(['codFiscale' => $codFiscale, 'giorno' => $giorno]);
 
-echo "Inserimento riuscito";
+// Ridirige il browser verso la pagine indicata nella Location
+header("Location: lista_prenotazioni.php");
+
+exit(0);
