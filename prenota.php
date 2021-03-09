@@ -30,3 +30,5 @@ $stmt = $pdo->prepare($sql);
 
 // Invio dei dati concreti che verranno messi al posto dei "segnaposto" (:codFiscale, :giorno)
 $stmt->execute(['codFiscale' => $codFiscale, 'giorno' => $giorno]);
+
+echo "Inserimento riuscito";
