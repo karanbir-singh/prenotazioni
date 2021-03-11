@@ -8,3 +8,6 @@ Partendo da questo spunto, verrà sviluppata un'applicazione che risolva questo 
 ### Funzionalità
 
 * Inserire una prenotazione con **codice fiscale** e **data** dell'appuntamento.
+* Scegliere la **sede** in cui effettuare il tampone
+* Consultare l'**esito del tempone**
+* **Cancellare** una prenotazione
