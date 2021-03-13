@@ -12,8 +12,7 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     $id = $row['id'];
     $codFiscale = $row['codice_fiscale'];
     $data = $row['giorno'];
-
-    $uniqid = uniqid(uniqid(),true);
+    $uniqid = $row['codice_prenotazione'];
 
     $table = $table . "<tr style='text-align: center'>
                             <td style='border: 1px solid black'>$id</td>
