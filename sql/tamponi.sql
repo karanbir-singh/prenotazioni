@@ -29,3 +29,5 @@ CREATE TABLE `prenotazione` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+-- Dump completed on 2021-03-13 10:41:20
