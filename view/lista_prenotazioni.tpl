@@ -10,7 +10,13 @@
 <body>
 <h1>Portale prenotazioni</h1>
 <h2>Lista delle prenotazioni</h2>
-<table style="width: 100%"><tr><th>ID</th><th>Codice fiscale</th><th>Data</th><th>Codice prenotazione</th></tr>
+<table style="width: 100%">
+    <tr>
+        <th>ID</th>
+        <th>Codice fiscale</th>
+        <th>Data</th>
+        <th>Codice prenotazione</th>
+    </tr>
     <?php foreach($result as $row): ?>
     <tr>
         <td><?php echo $row['id'] ?></td>
