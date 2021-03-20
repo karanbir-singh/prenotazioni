@@ -12,9 +12,8 @@ $sql = "INSERT INTO prenotazione VALUES (null, :codFiscale, :giorno, :codice_pre
 $stmt = $pdo->prepare($sql);
 
 // Invio dei dati concreti che verranno messi al posto dei "segnaposto" (:codFiscale, :giorno)
-$stmt->execute(['codFiscale' => $codFiscale, 'giorno' => $giorno, 'codice_prenotazione' => substr(uniqid(uniqid(),true),-30)]);
+$codice_prenotazione = substr(uniqid(uniqid(),true),-30);
+$stmt->execute(['codFiscale' => $codFiscale, 'giorno' => $giorno, 'codice_prenotazione' => $codice_prenotazione]);
 
-// Ridirige il browser verso la pagine indicata nella Location
-header("Location: lista_prenotazioni.php");
-
-exit(0);
+//Mostra il codice della prenotazione
+echo $codice_prenotazione;
