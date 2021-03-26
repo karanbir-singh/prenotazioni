@@ -29,5 +29,40 @@ $stmt->execute(['data_inizio' => $data_inizio, 'data_fine' => $data_fine]);
 // Estraggo le righe di risposta che finiranno come vettori in $result
 $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-//Rendo un template che mi visualizza la tabella
+// Rendo un template che mi visualizza la tabella
 echo $templates->render('prenotazioni_per_date', ['result' => $result]);
+
+// Dati da visualizzare nel grafico
+$dataPoints = array();
+foreach ($result as $item) {
+    $dataPoints[] = array('label' => $item['giorno'], 'y' => $item['numero_prenotazioni']);
+}
+
+?>
+
+<script>
+    window.onload = function () {
+        var chart = new CanvasJS.Chart("chartContainer", {
+            animationEnabled: true,
+            exportEnabled: true,
+            theme: "light1", // "light1", "light2", "dark1", "dark2"
+            title: {
+                text: "Numero delle prenotazioni giornaliere",
+                fontFamily: "Segoe UI",
+                fontWeight: "bolder"
+            },
+            axisY: {
+                title: "N. prenotazioni" ,
+                includeZero: true
+            },
+            data: [{
+                type: "column", //change type to bar, line, area, pie, etc
+                indexLabel: "{y}", //Shows y value on all Data Points
+                indexLabelFontColor: "#5A5757",
+                indexLabelPlacement: "outside",
+                dataPoints: <?php echo json_encode($dataPoints, JSON_NUMERIC_CHECK) ?>
+            }]
+        });
+        chart.render();
+    }
+</script>
