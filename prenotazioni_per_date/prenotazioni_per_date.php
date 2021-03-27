@@ -1,13 +1,13 @@
 <?php
 require '../vendor/autoload.php';
-include_once "config.php";
+include_once "../config.php";
 
 use League\Plates\Engine;
 
 // Viene creato l'oggetto per la gestione dei template
 // view e' la cartella che contiene il template file
 // tpl e' l'estensione del template file
-$templates = new Engine('./view', 'tpl');
+$templates = new Engine('../view', 'tpl');
 
 // Date come estremi dell'intervallo
 $data_inizio = $_POST['data_inizio'];
