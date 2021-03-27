@@ -1,6 +1,6 @@
 <?php
-include_once "config.php";
-include_once "phpqrcode/qrlib.php";
+include_once "../config.php";
+include_once "../phpqrcode/qrlib.php"; //http://phpqrcode.sourceforge.net/
 
 // Variabili valorizzate tramite POST
 $codFiscale = $_POST['codFiscale'];
