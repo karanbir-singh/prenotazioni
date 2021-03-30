@@ -8,7 +8,7 @@ $giorno = $_POST['giorno'];
 
 // Query di inserimento preparata
 $sql_check = "SELECT COUNT(*) AS numero_prenotazioni FROM prenotazione WHERE giorno = '$giorno'";
-$sql_add = "INSERT INTO prenotazione VALUES (null, :codFiscale, :giorno, :codice_prenotazione)";
+$sql_add = "INSERT INTO prenotazione VALUES (null, :codFiscale, :giorno, :codice_prenotazione, false, null)";
 
 // Controllo
 $stmt_check = $pdo->query($sql_check);
