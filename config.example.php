@@ -21,3 +21,9 @@ $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
 
 // Oggetto che rappresenta la connessione al database
 $pdo = new PDO($dsn, $user, $pass);
+
+// Trasforma tutti gli errori SQL in eccezioni PHP
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+// Su qualsiasi pagine parte la sessione
+session_start();
