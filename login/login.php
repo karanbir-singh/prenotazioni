@@ -23,6 +23,9 @@ $pw_hash = $result['password'];
 
 // Verifica se e' corretta
 if (password_verify($password, $pw_hash)) { // Password e' corretta
+    $_SESSION['username'] = $username; // la sessione permette di avere delle informazioni condivise fra varie pagine
+    // La pagina si occupa di controllare e sfruttare questa informazione
+
     // L'utente e' autenticato, far vedere le proprie prenotazioni
     echo "<h2>Login effettuato con successo</h3>";
 } else { // Password e' sbagliata
