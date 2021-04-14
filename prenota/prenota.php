@@ -1,6 +1,11 @@
 <?php
 include_once "../config.php";
-//include_once "../phpqrcode/qrlib.php"; //http://phpqrcode.sourceforge.net/
+require '../vendor/autoload.php';
+
+use League\Plates\Engine;
+
+$templates = new Engine('../view', 'tpl');
+
 
 // Variabili valorizzate tramite POST
 $codFiscale = $_POST['codFiscale'];
@@ -24,5 +29,5 @@ $stmt_add = $pdo->prepare($sql_add);
 $codice_prenotazione = substr(uniqid(uniqid(), true), -30); // creates code image and outputs it directly into browser;
 $stmt_add->execute(['codFiscale' => $codFiscale, 'giorno' => $giorno, 'codice_prenotazione' => $codice_prenotazione]);
 
-//Mostra il QR Code della prenotazione
-echo "<img src='https://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=$codice_prenotazione'>";
+// Renderizzazione template
+echo $templates->render('prenota', ['codice_prenotazione' => $codice_prenotazione]);
