@@ -1,6 +1,6 @@
 <?php
 include_once "../config.php";
-include_once "../phpqrcode/qrlib.php"; //http://phpqrcode.sourceforge.net/
+//include_once "../phpqrcode/qrlib.php"; //http://phpqrcode.sourceforge.net/
 
 // Variabili valorizzate tramite POST
 $codFiscale = $_POST['codFiscale'];
@@ -8,7 +8,7 @@ $giorno = $_POST['giorno'];
 
 // Query di inserimento preparata
 $sql_check = "SELECT COUNT(*) AS numero_prenotazioni FROM prenotazione WHERE giorno = '$giorno'";
-$sql_add = "INSERT INTO prenotazione VALUES (null, :codFiscale, :giorno, :codice_prenotazione, false, null)";
+$sql_add = "INSERT INTO prenotazione VALUES (null, :codFiscale, :giorno, :codice_prenotazione, false, null, false)";
 
 // Controllo
 $stmt_check = $pdo->query($sql_check);
@@ -25,4 +25,4 @@ $codice_prenotazione = substr(uniqid(uniqid(), true), -30); // creates code imag
 $stmt_add->execute(['codFiscale' => $codFiscale, 'giorno' => $giorno, 'codice_prenotazione' => $codice_prenotazione]);
 
 //Mostra il QR Code della prenotazione
-echo QRcode::png($codice_prenotazione);
+echo "<img src='https://chart.apis.google.com/chart?cht=qr&chs=150x150&chl=$codice_prenotazione'>";
